@@ -27,8 +27,7 @@
 
 <body>
 
-<dir>
-<div id="layout" class="pure-g">
+<div>
         <div class="pure-menu pure-menu-horizontal">
             <ul class="pure-menu-list">
                 <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
@@ -36,9 +35,11 @@
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
             </ul>
         </div>
-    </div>
+</div>
 
-    <div class="content pure-u-1 pure-u-md-1-4">
+<div class="pure-g">
+  <div class="content" pure-u-1 pure-u-md-1-6></div>
+  <div class="content pure-u-1 pure-u-md-1-6">
         <div>
             <div class="posts">
                 <h1 class="content-subhead">置顶</h1>
@@ -57,9 +58,9 @@
                     </div>
             </div>
          </div>
-    </div>
+ </div>
 
-    <div class="content pure-u-1 pure-u-md-3-4">
+ <div class="content pure-u-1 pure-u-md-1-6">
         <div>
             {% block content %}
             {% endblock %}
