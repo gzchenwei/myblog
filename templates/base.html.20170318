@@ -28,59 +28,17 @@
 <body>
 
 <div>
-<div class="header">
         <div class="pure-menu pure-menu-horizontal">
-            <a class="pure-menu-heading" href="">Photo Gallery</a>
-
             <ul class="pure-menu-list">
-                <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Blog</a></li>
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
             </ul>
         </div>
-    </div>
+</div>
 
-<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-5">
-        <div class="header">
-            <h1 class="brand-title">Blog 陈伟</h1>
-            <h2 class="brand-tagline">记录点点滴滴</h2>
-
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a class="pure-button" href="#">主页</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="pure-button" href="https://github.com">GitHub</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-
-    <div class="content pure-u-1 pure-u-md-3-4">
-        <div>
-            <div class="posts">
-                <h1 class="content-subhead">置顶</h1>
-                <section class="post">
-                
-                <h2 class="post-title">关于我</h2>
-                <p class="post-meta">
-                            By <a href="#" class="post-author">陈伟</a> under <a class="post-category post-category-design" href="#">CSS</a> <a class="post-category post-category-pure" href="#">Pure</a>
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <p>
-				一个成长中的爸爸，一个不成熟的运维工程师。
-                        </p>
-                    </div>
-            </div>
-         </div>
-    </div>
-
-    <div class="content pure-u-1 pure-u-md-3-4">
+<div class="pure-g">
+ <div class="content pure-u-1 pure-u-md-1-2">
         <div>
             {% block content %}
             {% endblock %}
@@ -93,9 +51,19 @@
                         <li class="pure-menu-item"><a href="http://github.com/yahoo/pure/" class="pure-menu-link">GitHub</a></li>
                     </ul>
                 </div>
+
             </div>
         </div>
-    </div>
+ </div>
+        <div>
+            <div class="posts">
+                <h1 class="content-subhead">归档</h1>
+                <section class="post">
+                      <h2 class="post-title">关于我</h2>
+                </section>
+            </div>
+        </div>
+ </div>
 </div>
 
 </body>

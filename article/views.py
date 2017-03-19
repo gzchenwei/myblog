@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from datetime import datetime
 
 def showall(request):
-    post_list = Article.objects.all()
+    post_list = Article.objects.all()[::-1]
     return render(request, 'home.html', {'post_list' : post_list})
 
 def archives(request):
