@@ -3,7 +3,7 @@
 
 
 {% block content %}
-<div class="posts">
+<div class="post">
         <section class="post">
             <header class="post-header">
                 <h2 class="post-title">{{ post.title }}</h2>
@@ -19,5 +19,13 @@
                     </p>
                 </div>
         </section>
+</div><!-- /.blog-post -->
+{% endblock %}
+
+{% block archives %}
+<div class="post">
+        {% for post in post_list %}
+                       <h5 class="post-title"><a href="{% url "detail" id=post.id %}">{{ post.title }}</a></h5>
+                                        {% endfor %}
 </div><!-- /.blog-post -->
 {% endblock %}

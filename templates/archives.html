@@ -1,8 +1,0 @@
-{% extends "base.html" %}
-{% block archives %}
-<div class="post">
-    {% for post in post_list %}
-	       <h2 class="post-title"><a href="{% url "detail" id=post.id %}">{{ post.title }}</a></h2>
-    {% endfor %}
-</div><!-- /.blog-post -->
-{% endblock %}
