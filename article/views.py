@@ -5,13 +5,23 @@ from django.shortcuts import *
 from article.models import Article
 from django.http import HttpResponse
 from datetime import datetime
-post_list = Article.objects.all()[::-1][0:10]
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def showall(request):
-#    post_list = Article.objects.all()[::-1]
-    return render(request, 'home.html', {'post_list' : post_list})
+    posts = Article.objects.all()[::-1]
+    paginator  = Paginator(posts ,10)
+    page = request.GET.get('page')
+    try:
+        post_list = paginator.page(page)
+    except PageNotAnInteger:
+        post_list = paginator.page(1)
+    except EmptyPage:
+        post_list = paginator.paginator(paginator.num_pages)
+    return render(request, 'home.html', {'post_list' : post_list,
+                                        'posts': posts})
 
 def archives(request, arch):
+    post_list = Article.objects.all()[::-1][0:10]
     try:
         arch_list = Article.objects.filter(category=str(arch))[::-1]
     except Article.DoesNotExist:

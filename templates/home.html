@@ -21,7 +21,7 @@
 
 {% block archives %}
 <div class="post">
-      {% for post in post_list %}
+      {% for post in posts %}
                <h5 class="post-title"><a href="{% url "detail" id=post.id %}">{{ post.title }}</a></h5>
                   {% endfor %}
 </div><!-- /.blog-post -->
