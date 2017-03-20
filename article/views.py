@@ -5,18 +5,19 @@ from django.shortcuts import *
 from article.models import Article
 from django.http import HttpResponse
 from datetime import datetime
-post_list = Article.objects.all()[::-1]
+post_list = Article.objects.all()[::-1][0:10]
 
 def showall(request):
 #    post_list = Article.objects.all()[::-1]
     return render(request, 'home.html', {'post_list' : post_list})
 
-def archives(request):
+def archives(request, arch):
     try:
-        post_list = Article.objects.all()
+        arch_list = Article.objects.filter(category=str(arch))[::-1]
     except Article.DoesNotExist:
 	raise Http404
-    return render(request, 'archives.html', {'post_list' : post_list,
+    return render(request, 'archives.html', {'arch_list' : arch_list,
+                                            'post_list': post_list,
 					     'error' : False})
 def detail(request, id):
     try:

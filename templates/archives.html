@@ -4,11 +4,11 @@
 {% block content %}
 
 
-{% for post in post_list %}
+{% for post in arch_list %}
    <div class="blog-post">
         <h2 class="blog-post-title">{{ post.title }}</h2>
            <p class="blog-post-meta">
-           <a class="post-author" href="#">{{ post.date_time|date:"Y-m-d" }} </a><a class="post-category post-category-js" href="{% url "archives" arch=post.category %}">{{ post.category }}</a>
+           <a class="post-author" href="#">{{ post.date_time|date:"Y-m-d" }} </a><a class="post-category post-category-js" href="/blog/{{ post.category }}">{{ post.category }}</a>
            </p> 
            <p>
               {{ post.content|custom_markdown }}
