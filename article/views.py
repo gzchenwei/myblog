@@ -32,7 +32,7 @@ def archives(request, arch):
 def detail(request, id):
     try:
         post = Article.objects.get(id=str(id))
-#        post_list = Article.objects.all()[::-1]
+        post_list = Article.objects.all()[::-1]
     except Article.DoesNotExist:
         raise Http404
     return render(request, 'post.html', {'post' : post,'post_list': post_list})
