@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def showall(request):
     posts = Article.objects.all()[::-1]
-    paginator  = Paginator(posts ,10)
+    paginator  = Paginator(posts ,3)
     page = request.GET.get('page')
     try:
         post_list = paginator.page(page)
