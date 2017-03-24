@@ -14,6 +14,7 @@
               {{ post.content|custom_markdown }}
            </p>
    </div><!-- /.blog-post -->
+{% endfor %}
    <nav>
        <ul class="pager">
            {% if post_list.has_previous  %}
@@ -24,7 +25,6 @@
            {% endif %}
        </ul>
   </nav>
-{% endfor %}
 {% endblock %}
 
 
