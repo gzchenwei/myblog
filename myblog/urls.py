@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth.views import login
 from views import *
+from django.contrib.auth.decorators import login_required
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^blog/', include('article.urls')),
-    url(r'^about/', about)
+    url(r'^blog/', login_required(include('article.urls'))),
+    url(r'^about/', about),
+    url(r'^$', index),
+    url(r'^login/', login),
 ]

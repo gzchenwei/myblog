@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+
 def showall(request):
     posts = Article.objects.all()[::-1]
     paginator  = Paginator(posts ,3)
@@ -18,7 +19,7 @@ def showall(request):
     except EmptyPage:
         post_list = paginator.paginator(paginator.num_pages)
     return render(request, 'home.html', {'post_list' : post_list,
-                                        'posts': posts})
+                                       'posts': posts})
 
 def archives(request, arch):
     post_list = Article.objects.all()[::-1][0:10]

@@ -1,0 +1,44 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.modal-content {
+  border-radius: 3px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.09);
+    }
+
+.form-sign-in {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-sign-in .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.form-sign-in input {
+  margin-bottom: 15px;
+}
+
+.ie-warn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
