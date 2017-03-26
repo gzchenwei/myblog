@@ -3,10 +3,16 @@ from django.shortcuts import *
 # Create your views here.
 
 from article.models import Article
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+def require_login(view):
+    def new_view(request,*args,**kwargs):
+        if not request.user.is_authenticated():
+            return HttpResponseRedirect('/')
+        return view(request, *args, **kwargs)
+    return new_view
 
 def showall(request):
     posts = Article.objects.all()[::-1]

@@ -22,8 +22,8 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^blog/', login_required(include('article.urls'))),
+    url(r'^blog/', include('article.urls')),
     url(r'^about/', about),
     url(r'^$', index),
-    url(r'^login/', login),
+    url(r'^login/', mylogin),
 ]

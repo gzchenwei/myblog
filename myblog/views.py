@@ -13,14 +13,16 @@ def about(request):
 def index(request):
     return render(request,'index.html')
 
-def login(request):
+def mylogin(request):
     if request.method == 'POST':
         username = request.POST.get('user_id')
         password = request.POST.get('pwd')
         t = authenticate(username=username, password=password)
         if t is not None:
-            auth.login(request, t)
-            return HttpResponseRedirect('/blog')
+            login(request, t)
+            response = HttpResponseRedirect('/blog')
+            response.set_cookie('user_id', username, 3600)
+            return response
         else:
             errors="pls check your user and password"
             return render_to_response('index.html',{'errors': errors})
