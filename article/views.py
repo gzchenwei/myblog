@@ -3,9 +3,14 @@ from django.shortcuts import *
 # Create your views here.
 
 from article.models import Article
+from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponse, HttpResponseRedirect
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+def req_perm(pattern, name, view, permission, **kwargs):
+    return url(pattern,
+               permission_required(permission)(view.as_view(**kwargs)),
+               name=name)
 
 def require_login(view):
     def new_view(request,*args,**kwargs):
