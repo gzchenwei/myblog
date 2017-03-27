@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def require_login(view):
     def new_view(request,*args,**kwargs):
-        if not request.user.is_authenticated():
+        if not request.COOKIES["logind"]:
             return HttpResponseRedirect('/')
         return view(request, *args, **kwargs)
     return new_view
