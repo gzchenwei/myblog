@@ -21,7 +21,6 @@ def mylogin(request):
         if t is not None:
             login(request, t)
             response = HttpResponseRedirect('/blog')
-            response.set_cookie('logind', True)
             return response
         else:
             errors="pls check your user and password"

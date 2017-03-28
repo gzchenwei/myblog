@@ -7,14 +7,10 @@ from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponse, HttpResponseRedirect
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-def req_perm(pattern, name, view, permission, **kwargs):
-    return url(pattern,
-               permission_required(permission)(view.as_view(**kwargs)),
-               name=name)
 
 def require_login(view):
     def new_view(request,*args,**kwargs):
-        if not request.COOKIES["logind"]:
+        if not request.user.is_authenticated:
             return HttpResponseRedirect('/')
         return view(request, *args, **kwargs)
     return new_view
