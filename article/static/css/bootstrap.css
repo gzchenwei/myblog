@@ -320,6 +320,7 @@ th {
 }
 .glyphicon-user:before {
   content: "\e008";
+  color: red;
 }
 .glyphicon-film:before {
   content: "\e009";

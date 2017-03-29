@@ -9,6 +9,7 @@ class Article(models.Model):
     category = models.CharField(max_length = 50,blank = True)
     date_time = models.DateTimeField(auto_now_add = True)
     content = models.TextField(blank = True, null = True)
+    author = models.CharField(max_length = 50)
 
 
 def __unicode__(self):

@@ -25,5 +25,5 @@ urlpatterns = [
     url(r'^blog/', include('article.urls')),
     url(r'^about/', about),
     url(r'^$', index),
-#    url(r'^login/', mylogin),
+    url(r'^logout/', logout_view),
 ]

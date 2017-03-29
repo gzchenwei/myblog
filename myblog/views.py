@@ -3,7 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from datetime import datetime
 from django.shortcuts import *
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 
 post_list = Article.objects.all()[::-1]
 
@@ -17,11 +17,16 @@ def index(request):
         t = authenticate(username=username, password=password)
         if t is not None:
             login(request, t)
-            #response = HttpResponseRedirect('/blog/?next=%s' % request.path)
-            #return response
-            return redirect(redirect_to)
+            response = HttpResponseRedirect('/blog/?next=%s' % request.path)
+            return response
         else:
             errors="pls check your user and password"
             return render_to_response('index.html',{'errors': errors})
     else:
         return render(request,'index.html')
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+
