@@ -15,8 +15,8 @@ def require_login(view):
         return view(request, *args, **kwargs)
     return new_view
 
-def showall(request):
-    posts = Article.objects.all()[::-1]
+def show(request):
+    posts = Article.objects.filter(author__iexact = request.user)[::-1]
     paginator  = Paginator(posts ,3)
     page = request.GET.get('page')
     try:
