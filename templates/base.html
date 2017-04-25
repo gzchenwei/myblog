@@ -24,6 +24,15 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="{% static 'js/ie-emulation-modes-warning.js' %}"></script>
+    <!--
+    <script charset="utf-8"  src="editor/kindeditor.js"></script>
+    <script charset="utf-8"  src="editor/lang/zh_CN.js"></script>
+    <script>
+            KindEditor.ready(function(K) {
+                window.editor = K.create("#editor_id");
+            });
+    </script>
+    -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -45,7 +54,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <small>
                 <span class="glyphicon glyphicon-user"></span>
-                <b style="color:black">{{ request.user }}</b>
+                <b>{{ request.user }}</b>
               </small>
             <b class="caret"></b>
             </a>
