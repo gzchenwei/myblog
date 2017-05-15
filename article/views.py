@@ -1,5 +1,5 @@
 from django.shortcuts import *
-
+from form import *
 # Create your views here.
 
 from article.models import Article
@@ -45,10 +45,22 @@ def detail(request, id):
         raise Http404
     return render(request, 'post.html', {'post' : post,'post_list': post_list})
 
-def search_tag(request, tag) :
+def search_tag(request, tag):
     try:
         post_list = Article.objects.filter(category__iexact = tag) #contains
     except Article.DoesNotExist :
         raise Http404
     return render(request, 'tag.html', {'post_list' : post_list})
+
+def post_new(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('detail', id=post.id)
+    else:
+        form = PostForm()
+    return render(request, 'post_edit.html', {'form': form})
 

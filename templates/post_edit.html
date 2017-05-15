@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load custom_markdown %}
+{% block content %}
+   <form method="POST" class="post-form">{% csrf_token %}
+       <fieldset class="module aligned ">
+       <div class="form-row form-group field-title">
+                <label class="required" for="id_title">主题:</label>
+                  <input class="form-control vTextField required" id="id_title" maxlength="30" name="title" type="text" required />
+        </div>
+       <div class="form-row form-group field-category">
+                <label for="id_category">目录:</label>
+                  <input class="form-control vTextField" id="id_category" maxlength="50" name="category" type="text" />
+        </div>
+       <div class="form-row form-group field-content">
+                <label for="id_content">内容:</label>
+                  <textarea class="vLargeTextField form-control" cols="100" id="id_content" name="content" rows="30">
+                  </textarea>
+       </div>
+      </fieldset>
+       <button type="submit" class="save btn btn-default">Save</button>
+   </form>
+{% endblock %} 
