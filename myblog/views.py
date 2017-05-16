@@ -29,4 +29,5 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-
+def test(request):
+    return  render(request,'test.html')

@@ -53,6 +53,31 @@ def search_tag(request, tag):
     return render(request, 'tag.html', {'post_list' : post_list})
 
 def post_new(request):
+    post_list = Article.objects.all()[::-1][0:10]
+    try:
+        arch_list = Article.objects.filter(category=str(arch))[::-1]
+    except Article.DoesNotExist:
+	raise Http404
+    return render(request, 'archives.html', {'arch_list' : arch_list,
+                                            'post_list': post_list,
+					     'error' : False})
+def detail(request, id):
+    try:
+        post = Article.objects.get(id=str(id))
+        post_list = Article.objects.all()[::-1]
+    except Article.DoesNotExist:
+        raise Http404
+    return render(request, 'post.html', {'post' : post,'post_list': post_list})
+
+def search_tag(request, tag):
+    try:
+        post_list = Article.objects.filter(category__iexact = tag) #contains
+    except Article.DoesNotExist :
+        raise Http404
+    return render(request, 'tag.html', {'post_list' : post_list})
+
+def post_new(request):
+    post_list = Article.objects.all()[::-1][0:10]
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
@@ -62,5 +87,5 @@ def post_new(request):
             return redirect('detail', id=post.id)
     else:
         form = PostForm()
-    return render(request, 'post_edit.html', {'form': form})
+    return render(request, 'post_edit.html', {'form': form, 'post_list': post_list})
 

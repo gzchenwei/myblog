@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^about/', about),
     url(r'^$', index),
     url(r'^logout/', logout_view),
+    url(r'^test/', test),
 ]

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table class="table table-striped table-bordered table-hover">
+<tr>
+    <th>#</th>
+    <th>first name</th>
+    <th>last name</th>
+    <th>username</th>
+  </tr>
+<tr>
+    <td>1</td>
+    <td>mark</td>
+    <td>otto</td>
+    <td>@mdo</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>jacob</td>
+    <td>thornton</td>
+    <td>@fat</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>larry</td>
+    <td>the bird</td>
+    <td>@twitter</td>
+</tr>
+</table>
+
+<form>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email Address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>                                                                                                                                             
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+</form>
+{% endblock %}
