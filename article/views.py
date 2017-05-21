@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import *
 from form import *
 # Create your views here.
@@ -31,7 +32,7 @@ def show(request):
 def archives(request, arch):
     post_list = Article.objects.all()[::-1][0:10]
     try:
-        arch_list = Article.objects.filter(category=str(arch))[::-1]
+        arch_list = Article.objects.filter(category=arch)[::-1]
     except Article.DoesNotExist:
 	raise Http404
     return render(request, 'archives.html', {'arch_list' : arch_list,
@@ -82,10 +83,24 @@ def post_new(request):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            post.author = str(request.user)
             post.save()
             return redirect('detail', id=post.id)
     else:
         form = PostForm()
     return render(request, 'post_edit.html', {'form': form, 'post_list': post_list})
 
+def post_edit(request, id):
+    post_list = Article.objects.all()[::-1][0:10]
+    post = get_object_or_404(Article, id=id)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = str(request.user)
+            post.save()
+            return redirect('detail', id=post.id)
+    else:
+        form = PostForm(instance=post)
+
+    return render(request, 'post_edit.html', {'form': form, 'post_list': post_list})

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from article.models import Article
 from django.http import HttpResponse,HttpResponseRedirect
 from datetime import datetime
