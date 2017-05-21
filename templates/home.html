@@ -6,7 +6,7 @@
 
 {% for post in post_list %}
    <div class="blog-post">
-        <h2 class="blog-post-title">{{ post.title }}</h2>
+	   <h2 class="blog-post-title">{{ post.title }}   <a class="btn btn-default" href="{% url "post_edit" id=post.id %}"><span class="glyphicon glyphicon-pencil"></span></a></h2>
            <p class="blog-post-meta">
            <a class="post-author" href="#">{{ post.date_time|date:"Y-m-d" }} </a><a class="post-category post-category-js" href="{% url "archives" arch=post.category %}">{{ post.category }}</a>
            </p> 
