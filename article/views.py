@@ -9,6 +9,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+post_list = Article.objects.all()[::-1][0:10]
+
 def require_login(view):
     def new_view(request,*args,**kwargs):
         if not request.user.is_authenticated:
@@ -30,7 +32,7 @@ def show(request):
                                        'posts': posts})
 
 def archives(request, arch):
-    post_list = Article.objects.all()[::-1][0:10]
+    #post_list = Article.objects.all()[::-1][0:10]
     try:
         arch_list = Article.objects.filter(category=arch)[::-1]
     except Article.DoesNotExist:
@@ -54,7 +56,7 @@ def search_tag(request, tag):
     return render(request, 'tag.html', {'post_list' : post_list})
 
 def post_new(request):
-    post_list = Article.objects.all()[::-1][0:10]
+    #post_list = Article.objects.all()[::-1][0:10]
     try:
         arch_list = Article.objects.filter(category=str(arch))[::-1]
     except Article.DoesNotExist:
@@ -78,7 +80,7 @@ def search_tag(request, tag):
     return render(request, 'tag.html', {'post_list' : post_list})
 
 def post_new(request):
-    post_list = Article.objects.all()[::-1][0:10]
+    #post_list = Article.objects.all()[::-1][0:10]
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
@@ -91,7 +93,7 @@ def post_new(request):
     return render(request, 'post_edit.html', {'form': form, 'post_list': post_list})
 
 def post_edit(request, id):
-    post_list = Article.objects.all()[::-1][0:10]
+    #post_list = Article.objects.all()[::-1][0:10]
     post = get_object_or_404(Article, id=id)
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
